@@ -65,25 +65,7 @@ public class PlayerDash : MonoBehaviour
             lastTapTime = Time.time;
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (Time.time - lastTapTime < doubleTapTime && lastButton == "Vertical")
-            {
-                StartDash();
-            }
-            lastButton = "Vertical";
-            lastTapTime = Time.time;
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (Time.time - lastTapTime < doubleTapTime && lastButton == "Vertical")
-            {
-                StartDash();
-            }
-            lastButton = "Vertical";
-            lastTapTime = Time.time;
-        }
+       
     }
 
     void StartDash()
