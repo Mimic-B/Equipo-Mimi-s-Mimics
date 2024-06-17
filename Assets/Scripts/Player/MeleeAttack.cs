@@ -12,18 +12,20 @@ public class MeleeAttack : MonoBehaviour
 
     private Vector2 attackDirection; // Dirección del ataque
 
-    [SerializeField] TextMeshProUGUI text;
-
-    private void OnEnable()
-    {
-        UpdateAmmo();
-    }
+   
 
     void Update()
     {
         // Verificar si el jugador presiona una tecla de dirección para atacar
+        if (Input.GetMouseButtonDown(0))
+        {
+            attackDirection = new Vector2(this.transform.localScale.x, 0);
+            attackDirection = attackDirection.normalized;
+            Attack();
+        }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+
             attackDirection = Vector2.right;
             Attack();
         }
@@ -71,9 +73,6 @@ public class MeleeAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position + (Vector3)attackDirection * attackRange, attackRange);
     }
 
-    void UpdateAmmo()
-    {
-        text.text = "";
-    }
+   
 }
 
