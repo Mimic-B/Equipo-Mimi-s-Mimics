@@ -23,22 +23,7 @@ public class MeleeAttack : MonoBehaviour
             attackDirection = attackDirection.normalized;
             Attack();
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-
-            attackDirection = Vector2.right;
-            Attack();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            attackDirection = Vector2.left;
-            Attack();
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            attackDirection = Vector2.up;
-            Attack();
-        }
+        
     }
 
     void Attack()
@@ -56,9 +41,12 @@ public class MeleeAttack : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy"))
             {
+                bool parry = enemy.GetComponent<EnemyControllerParry>().Parry(3);
                 // Aquí puedes acceder a un script de enemigo y llamar a un método para aplicar daño
                 // Por ejemplo: enemy.GetComponent<Enemy>().TakeDamage(damage);
-                enemy.GetComponent<EnemyHealth>().Hurt(damage);
+                if(parry == false) { 
+                    enemy.GetComponent<EnemyHealth>().Hurt(damage);
+                }
               
             }
         }
