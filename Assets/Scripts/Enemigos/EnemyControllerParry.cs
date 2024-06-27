@@ -3,8 +3,8 @@ using UnityEngine;
 public class EnemyControllerParry : MonoBehaviour
 {
     public IsPArryPosible pn;
-    private bool isStunned = false; // Booleano que indica si el enemigo está aturdido
-    private float stunTimer = 0f; // Temporizador para el aturdimiento
+    public bool isStunned = false; // Booleano que indica si el enemigo está aturdido
+    public float stunTimer = 0f; // Temporizador para el aturdimiento
     [SerializeField] Animator animator;
     // Método para aplicar el parry al enemigo
     public bool Parry(float stunDuration)
