@@ -31,8 +31,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        bool lastGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
+        if(lastGrounded != isGrounded && isGrounded == true)
+        {
+            animator.SetTrigger("HitGround");
+        }
         if (isGrounded)
         {
             jumpsLeft = extraJumps;
@@ -85,8 +90,11 @@ public class PlayerMovement : MonoBehaviour
         // Si quieres que el jugador pueda cambiar la dirección del salto, puedes agregar esto:
         if (moveInput != 0)
          {
-             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
          }
+        animator.SetTrigger("Jump");
+        animator.SetBool("HitGround", false);
     }
 
     
