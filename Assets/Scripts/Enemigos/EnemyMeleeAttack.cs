@@ -39,7 +39,7 @@ public class EnemyMeleeAttack : MonoBehaviour
         if (hitPlayer != null)
         {
             // Aplicar daño al jugador (asumiendo que el jugador tiene un script PlayerHealth)
-            PlayerHealth playerHealth = hitPlayer.GetComponent<PlayerHealth>();
+            Health playerHealth = hitPlayer.GetComponent<Health>();
             if (playerHealth != null)
             {
                 // Aquí podrías verificar si el jugador ha realizado un parry exitoso
