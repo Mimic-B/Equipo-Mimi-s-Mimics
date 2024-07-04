@@ -632,6 +632,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   pd: {fileID: 1692563207}
+  isAttacking: 0
   animator: {fileID: 1692563211}
 --- !u!212 &1692563209
 SpriteRenderer:
@@ -755,8 +756,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.026119947, y: -0.0036557913}
-  m_Size: {x: 0.4012456, y: 1.0120556}
+  m_Offset: {x: 0.026119947, y: 0.020855725}
+  m_Size: {x: 0.4012456, y: 0.9630326}
   m_Direction: 0
 --- !u!50 &1692563213
 Rigidbody2D:

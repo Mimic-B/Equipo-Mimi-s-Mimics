@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = false;
     private int jumpsLeft;
 
+    public bool isAttacking = false;
     
-
   
     [SerializeField] Animator animator;
 
@@ -31,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
+        if(isAttacking) return;
+
         bool lastGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
@@ -59,7 +62,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(pd.IsDashing()) return;
+        if (isAttacking)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+        if (pd.IsDashing()) return;
 
         float moveInput = 0;
         

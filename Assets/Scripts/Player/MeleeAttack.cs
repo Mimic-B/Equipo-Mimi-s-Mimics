@@ -11,8 +11,9 @@ public class MeleeAttack : MonoBehaviour
     public Animator animator; // Controlador de animaciones
 
     private Vector2 attackDirection; // Dirección del ataque
-
-   
+    public int combo = 0;
+    public float resetComboTime = 1;
+    public float currentComboTime = 0;
 
     void Update()
     {
@@ -23,6 +24,19 @@ public class MeleeAttack : MonoBehaviour
             attackDirection = attackDirection.normalized;
             Attack();
         }
+
+        if(combo > 0)
+        {
+            currentComboTime += Time.deltaTime;
+            if(resetComboTime <= currentComboTime)
+            {
+                currentComboTime = 0;
+                combo = 0;
+
+                animator.SetBool("Attack2", false);
+                animator.SetBool("Attack3", false);
+            }
+        }
         
     }
 
@@ -31,7 +45,23 @@ public class MeleeAttack : MonoBehaviour
         // Reproducir la animación de ataque
         if (animator != null)
         {
-            animator.SetTrigger("Attack");
+            if(combo == 0) { 
+                animator.SetTrigger("Attack");
+                combo +=1;
+                currentComboTime = 0;
+            }
+            else if (combo == 1)
+            {
+                animator.SetTrigger("Attack2");
+                combo += 1;
+                currentComboTime = 0;
+            }
+            else if (combo == 2)
+            {
+                animator.SetTrigger("Attack3");
+                combo += 1;
+                currentComboTime = 0;
+            }
         }
 
         // Detectar enemigos en el rango del ataque usando etiquetas

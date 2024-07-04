@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3dc44700af4ffc3488e8a2c7bfa3660c
+guid: b21d0c7fadfc63d429f5aa46b9b96bdd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,19 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -120,11 +107,24 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jump player_0
+      name: Jump player 1_0
       rect:
         serializedVersion: 2
         x: 46
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9088fa0681fd47f4e8166ae484f99e2b
-      internalID: 1465951635
+      spriteID: d38cb0d4312a7b042904c9c68eb900b2
+      internalID: 720460472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_1
+      name: Jump player 1_1
       rect:
         serializedVersion: 2
         x: 421
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 258d9b4c80530df42a1e54a212ad1abf
-      internalID: 830378521
+      spriteID: d590a785f454f2d4aac5efb656ee12e0
+      internalID: -436647391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_2
+      name: Jump player 1_2
       rect:
         serializedVersion: 2
         x: 734
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cf7a546584268c4a9ef535b0f47bd7f
-      internalID: 1723540498
+      spriteID: c20d9bf6f85e36541a4aeb687c7a7529
+      internalID: 1364866681
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_3
+      name: Jump player 1_3
       rect:
         serializedVersion: 2
         x: 1053
@@ -213,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68d9556e78a849746a889268e1c91dcf
-      internalID: -890775831
+      spriteID: d923cc7d7bea98944b2ae3b2a8a55591
+      internalID: 1486072400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_4
+      name: Jump player 1_4
       rect:
         serializedVersion: 2
         x: 1358
@@ -234,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d16a7bcc360bec4c9bcc8caf0da2ca2
-      internalID: 1180688120
+      spriteID: 433fbbc290f9fb441836c8b98c5043a7
+      internalID: 1862866144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_5
+      name: Jump player 1_5
       rect:
         serializedVersion: 2
         x: 1694
@@ -255,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a85f1e40342f8c641be23adee88010d3
-      internalID: -1563445310
+      spriteID: 1f634e3320e1d9f41be161bd1da8d292
+      internalID: 458417739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_6
+      name: Jump player 1_6
       rect:
         serializedVersion: 2
         x: 2037
@@ -276,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31ba8b662c481ad4aa214aceefb8d7f2
-      internalID: -1890854879
+      spriteID: 1c1687ff59b59654ea3f9ef914bd7be7
+      internalID: 780584991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_7
+      name: Jump player 1_7
       rect:
         serializedVersion: 2
         x: 2406
@@ -297,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 129e1eb012f4bf84da02953e807aa040
-      internalID: -442215435
+      spriteID: a3ed1b1eba5999a46bcc33eaaaa6a6d4
+      internalID: -761807043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_8
+      name: Jump player 1_8
       rect:
         serializedVersion: 2
         x: 2782
@@ -318,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ba111c2c1a20444db271e3d8739ddb1
-      internalID: 2047081677
+      spriteID: 14c9056a98a74eb46ad386e8ff0a8f74
+      internalID: 328082261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_9
+      name: Jump player 1_9
       rect:
         serializedVersion: 2
         x: 3190
@@ -339,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c642e2a09684ea6448f72daffd23f6f8
-      internalID: -1704461746
+      spriteID: 79611aaae017270429ca28529dbb3a5b
+      internalID: 1503590670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_10
+      name: Jump player 1_10
       rect:
         serializedVersion: 2
         x: 22
@@ -360,19 +360,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1834d2b672e5db4294be356d3688089
-      internalID: -75747226
+      spriteID: 94412e6da1d4c004b9932276173c982f
+      internalID: 1147190377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_11
+      name: Jump player 1_11
       rect:
         serializedVersion: 2
-        x: 389
+        x: 369
         y: 734
-        width: 349
+        width: 369
         height: 557
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -381,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6efcea224eca4c6448123eb02920eada
-      internalID: 451366428
+      spriteID: 2022af141142a7f4ba233a85c2622cdf
+      internalID: 185349240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump player_12
+      name: Jump player 1_12
       rect:
         serializedVersion: 2
         x: 758
@@ -402,8 +402,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f36cbe1ee8ecd9478e80186ba6c9ac7
-      internalID: 1053628207
+      spriteID: af8f8c941791d7e4f80f86aa73658f5f
+      internalID: -1593710081
       vertices: []
       indices: 
       edges: []
@@ -419,19 +419,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Jump player_0: 1465951635
-      Jump player_1: 830378521
-      Jump player_10: -75747226
-      Jump player_11: 451366428
-      Jump player_12: 1053628207
-      Jump player_2: 1723540498
-      Jump player_3: -890775831
-      Jump player_4: 1180688120
-      Jump player_5: -1563445310
-      Jump player_6: -1890854879
-      Jump player_7: -442215435
-      Jump player_8: 2047081677
-      Jump player_9: -1704461746
+      Jump player 1_0: 720460472
+      Jump player 1_1: -436647391
+      Jump player 1_10: 1147190377
+      Jump player 1_11: 185349240
+      Jump player 1_12: -1593710081
+      Jump player 1_2: 1364866681
+      Jump player 1_3: 1486072400
+      Jump player 1_4: 1862866144
+      Jump player 1_5: 458417739
+      Jump player 1_6: 780584991
+      Jump player 1_7: -761807043
+      Jump player 1_8: 328082261
+      Jump player 1_9: 1503590670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
