@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 1550487940}
   - component: {fileID: 1550487939}
   - component: {fileID: 1550487938}
-  m_Layer: 4
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -716,9 +716,9 @@ MonoBehaviour:
   attackPoint: {fileID: 738117972}
   animator: {fileID: 1692563211}
   combo: 0
-  resetComboTime: 0.743
+  resetComboTime: 1
   currentComboTime: 0
-  delayTime: 0.5
+  delayTime: 0.2
   currentdelayTime: 0
   ally: {fileID: 0}
   attackCollider: {fileID: 1551444010}
@@ -757,7 +757,7 @@ MonoBehaviour:
   groundCheck: {fileID: 824250100}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 8
   pd: {fileID: 1692563207}
   isAttacking: 0
   animator: {fileID: 1692563211}
