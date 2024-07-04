@@ -14,6 +14,11 @@ public class MeleeAttack : MonoBehaviour
     public int combo = 0;
     public float resetComboTime = 1;
     public float currentComboTime = 0;
+    public float delayTime = 0.5f;
+    public float currentdelayTime = 0;
+    public AllyController ally;
+    
+    public Collider2D attackCollider;
 
     void Update()
     {
@@ -23,18 +28,22 @@ public class MeleeAttack : MonoBehaviour
             attackDirection = new Vector2(this.transform.localScale.x, 0);
             attackDirection = attackDirection.normalized;
             Attack();
+            ally.ActivateAlly();
         }
 
         if(combo > 0)
         {
+            currentdelayTime += Time.deltaTime;
             currentComboTime += Time.deltaTime;
             if(resetComboTime <= currentComboTime)
             {
                 currentComboTime = 0;
+                currentdelayTime = 0;
                 combo = 0;
 
-                animator.SetBool("Attack2", false);
                 animator.SetBool("Attack3", false);
+                animator.SetBool("Attack2", false);
+                animator.SetBool("Attack", false);
             }
         }
         
@@ -50,17 +59,19 @@ public class MeleeAttack : MonoBehaviour
                 combo +=1;
                 currentComboTime = 0;
             }
-            else if (combo == 1)
+            else if (combo == 1 && currentdelayTime > delayTime)
             {
                 animator.SetTrigger("Attack2");
                 combo += 1;
                 currentComboTime = 0;
+                currentdelayTime = 0;
             }
-            else if (combo == 2)
+            else if (combo == 2 && currentdelayTime > delayTime)
             {
                 animator.SetTrigger("Attack3");
                 combo += 1;
                 currentComboTime = 0;
+                currentdelayTime = 0;
             }
         }
 
@@ -69,27 +80,31 @@ public class MeleeAttack : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            if (enemy.CompareTag("Enemy"))
-            {
-                bool parry = enemy.GetComponent<EnemyControllerParry>().Parry(3);
-                // Aquí puedes acceder a un script de enemigo y llamar a un método para aplicar daño
-                // Por ejemplo: enemy.GetComponent<Enemy>().TakeDamage(damage);
-                if(parry == false) { 
-                    enemy.GetComponent<EnemyHealth>().Hurt(damage);
-                }
-              
-            }
+            
         }
     }
 
-    void OnDrawGizmosSelected()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (attackPoint == null)
-            return;
+        
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if(collision.IsTouching(attackCollider) && attackCollider.isActiveAndEnabled) { 
+                Debug.Log("Hit");
+                bool parry = collision.gameObject.GetComponent<EnemyControllerParry>().Parry(3);
+                // Aquí puedes acceder a un script de enemigo y llamar a un método para aplicar daño
+                // Por ejemplo: enemy.GetComponent<Enemy>().TakeDamage(damage);
+                if (parry == false)
+                {
+                    collision.gameObject.GetComponent<EnemyHealth>().Hurt(damage);
+                }
+            }
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position + (Vector3)attackDirection * attackRange, attackRange);
+        }
     }
+
+
+    
 
    
 }
