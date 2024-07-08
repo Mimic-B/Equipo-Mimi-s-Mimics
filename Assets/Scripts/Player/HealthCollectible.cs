@@ -7,7 +7,7 @@ public class HealthCollectible : MonoBehaviour
     [SerializeField] private float healthValue; // how much health will the heart actually restore
 
 
-    private void OnCollisionEnter2D(Collider2D collision)
+    private void CollisionEnter2D(Collider2D collision)
     {
         // check if the player has collided with the heart
         if (collision.tag == "Player")

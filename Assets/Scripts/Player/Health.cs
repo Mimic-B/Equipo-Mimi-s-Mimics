@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; } // so can only changed in TakeDamage, but can be accessed in HealthBar.cs
     private Animator anim; // reference to animator for damage and death animation
     private bool dead; // check if dead
+    [SerializeField] UnityEvent onPlayerDeath;
 
     [Header("iFrames")]
     [SerializeField] private float invulnerabilityDuration; // how long the player is invulnerable after being hit, so they don't get hit instanly after and die quickly
@@ -73,15 +75,15 @@ public class Health : MonoBehaviour
 
 
 
-
+   
 }
 
 // test to see if TakeDamage works, press E to take damage
 //private void Update()
 //{
-//    if (Input.GetKeyDown(KeyCode.E))
-//    {
-//        TakeDamage(1); // take 1 damage
-//    }
+ //   if (Input.GetKeyDown(KeyCode.E))
+   // {
+     //   TakeDamage(1); // take 1 damage
+    //}
 //}
 
