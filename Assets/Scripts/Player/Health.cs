@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
         if (currentHealth > 0)
         {
             // player just hurt
-            anim.SetTrigger("hurt"); // hurt animation
+            anim.SetTrigger("Hurt"); // hurt animation
             StartCoroutine(Invunerability());  // iframes display (player flashes red)
         }
         else
