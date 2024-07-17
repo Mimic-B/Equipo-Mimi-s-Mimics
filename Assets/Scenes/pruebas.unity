@@ -1944,6 +1944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1005455277}
   - component: {fileID: 1005455276}
+  - component: {fileID: 1005455278}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -2018,6 +2019,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1005455278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005455275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b9f729238a1f547bdab5f7f115aa4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory: {fileID: 1692563217}
+  shopUI: {fileID: 427335373}
+  itemButtons:
+  - {fileID: 434997598}
+  - {fileID: 1366409459}
+  - {fileID: 2134424463}
+  itemPrices: c80000005e010000f4010000
 --- !u!1 &1122886626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,6 +2836,7 @@ GameObject:
   - component: {fileID: 1692563212}
   - component: {fileID: 1692563215}
   - component: {fileID: 1692563216}
+  - component: {fileID: 1692563217}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3074,6 +3095,20 @@ MonoBehaviour:
   playerHealth: {fileID: 1692563215}
   totalhealthBar: {fileID: 0}
   currenthealthBar: {fileID: 0}
+  text: {fileID: 0}
+--- !u!114 &1692563217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692563205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3b86a2c4a3f1843893de735e7a9324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: 0
 --- !u!1 &1701437608
 GameObject:
   m_ObjectHideFlags: 0
