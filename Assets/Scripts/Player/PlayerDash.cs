@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
-    public float dashSpeed = 15f;
+    public float dashSpeed = 15f; 
     public float dashDuration = 0.2f;
     public float doubleTapTime = 0.3f;
     public float dashCooldown = 1.3f; // Tiempo de cooldown entre dashes

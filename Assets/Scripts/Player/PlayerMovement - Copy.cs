@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerDash pd;
 
     private Rigidbody2D rb;
-    private bool isGrounded = false;
+    public bool isGrounded = false;
     private int jumpsLeft;
 
     public bool isAttacking = false;
