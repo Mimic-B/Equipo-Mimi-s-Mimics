@@ -13,9 +13,10 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
+        // Inicializar los botones de los ítems
         for (int i = 0; i < itemButtons.Length; i++)
         {
-            int index = i;
+            int index = i; // Necesario para capturar la variable en el lambda
             itemButtons[i].onClick.AddListener(() => BuyItem(index));
         }
     }
@@ -38,7 +39,7 @@ public class Shop : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            shopUI.SetActive(true);
+            shopUI.SetActive(true); // Mostrar UI de la tienda
         }
     }
 
@@ -46,8 +47,10 @@ public class Shop : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            shopUI.SetActive(false);
+            shopUI.SetActive(false); // Ocultar UI de la tienda
         }
     }
 }
+
+
 

@@ -8,14 +8,22 @@ public class HealthBar : MonoBehaviour
     [SerializeField] Health playerHealth;
     [SerializeField] Image totalhealthBar;
     [SerializeField] Image currenthealthBar;
+    [SerializeField] TextMeshProUGUI text;
 
     private void Start()
     {
-        if (totalhealthBar) totalhealthBar.fillAmount = playerHealth.currentHealth / 100; // totalHealth onlt needs to be updated once, so in Start()
+        UpdateHP();
+     totalhealthBar.fillAmount = playerHealth.currentHealth / playerHealth.maxHealth; // totalHealth onlt needs to be updated once, so in Start()
     }
 
     private void Update()
     {
-        if (totalhealthBar) currenthealthBar.fillAmount = playerHealth.currentHealth / 100; // keep the currenthealthBar updated
+        UpdateHP();
+     currenthealthBar.fillAmount = playerHealth.currentHealth / playerHealth.maxHealth; // keep the currenthealthBar updated
+    }
+
+    void UpdateHP()
+    {
+        text.text = playerHealth.currentHealth + "/" + playerHealth.maxHealth;
     }
 }

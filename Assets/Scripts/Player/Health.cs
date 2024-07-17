@@ -7,11 +7,13 @@ public class Health : MonoBehaviour
 {
     [Header("Health")]
     [SerializeField] private float startingHealth; // Vida inicial del jugador
-    [SerializeField] private float maxHealth; // Vida máxima del jugador
+    [SerializeField] public float maxHealth; // Vida máxima del jugador
     public float currentHealth { get; private set; } // Vida actual del jugador, solo puede ser modificada en TakeDamage o AddHealth
     private Animator anim; // Referencia al animador para las animaciones de daño y muerte
     private bool dead; // Verifica si el jugador está muerto
     [SerializeField] UnityEvent onPlayerDeath;
+
+    private Vector2 initialPosition;
 
     [Header("iFrames")]
     [SerializeField] private float invulnerabilityDuration; // Duración de la invulnerabilidad después de ser golpeado
@@ -20,6 +22,7 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
+        initialPosition = transform.position;
         currentHealth = startingHealth; // Se establece la vida inicial del jugador
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
@@ -46,7 +49,8 @@ public class Health : MonoBehaviour
                 anim.SetTrigger("die"); 
                 GetComponent<PlayerMovement>().enabled = false; 
                 dead = true;
-                onPlayerDeath.Invoke(); 
+                onPlayerDeath.Invoke();
+                RespawnAtCheckpoint();
             }
         }
     }
@@ -77,6 +81,19 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(invulnerabilityDuration / (numberOfFlashes * 2)); // Esperar un poco
         }
         Physics2D.IgnoreLayerCollision(8, 9, false); // Reactivar colisiones, terminando la invulnerabilidad del jugador
+    }
+
+    private void RespawnAtCheckpoint()
+    {
+        // Obtener la posición del checkpoint del CheckpointManager
+        Vector2 checkpointPosition = CheckpointManager.instance.GetCheckpointPosition();
+
+        // Reposicionar al jugador
+        transform.position = checkpointPosition;
+
+        // Restaurar la salud del jugador
+        currentHealth = maxHealth;
+        
     }
 }
 

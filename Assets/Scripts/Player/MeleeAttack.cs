@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
@@ -17,7 +16,7 @@ public class MeleeAttack : MonoBehaviour
     public float delayTime = 0.5f;
     public float currentdelayTime = 0;
     public AllyController ally;
-    
+
     public Collider2D attackCollider;
 
     void Update()
@@ -31,11 +30,11 @@ public class MeleeAttack : MonoBehaviour
             ally.ActivateAlly();
         }
 
-        if(combo > 0)
+        if (combo > 0)
         {
             currentdelayTime += Time.deltaTime;
             currentComboTime += Time.deltaTime;
-            if(resetComboTime <= currentComboTime)
+            if (resetComboTime <= currentComboTime)
             {
                 currentComboTime = 0;
                 currentdelayTime = 0;
@@ -46,7 +45,7 @@ public class MeleeAttack : MonoBehaviour
                 animator.SetBool("Attack", false);
             }
         }
-        
+
     }
 
     void Attack()
@@ -54,9 +53,10 @@ public class MeleeAttack : MonoBehaviour
         // Reproducir la animación de ataque
         if (animator != null)
         {
-            if(combo == 0) { 
+            if (combo == 0)
+            {
                 animator.SetTrigger("Attack");
-                combo +=1;
+                combo += 1;
                 currentComboTime = 0;
             }
             else if (combo == 1 && currentdelayTime > delayTime)
@@ -80,16 +80,17 @@ public class MeleeAttack : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            
+
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if(collision.IsTouching(attackCollider) && attackCollider.isActiveAndEnabled) { 
+            if (collision.IsTouching(attackCollider) && attackCollider.isActiveAndEnabled)
+            {
                 Debug.Log("Hit");
                 bool parry = collision.gameObject.GetComponent<EnemyControllerParry>().Parry(3);
                 // Aquí puedes acceder a un script de enemigo y llamar a un método para aplicar daño
@@ -103,9 +104,12 @@ public class MeleeAttack : MonoBehaviour
         }
     }
 
-
-    
-
-   
+    public void IncreaseDamage(int amount)
+    {
+        damage += amount;
+        Debug.Log("Damage increased by " + amount);
+    }
 }
+
+
 

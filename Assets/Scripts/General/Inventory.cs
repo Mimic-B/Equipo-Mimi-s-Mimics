@@ -9,11 +9,13 @@ public class Inventory : MonoBehaviour
 
     private Health playerHealth;
     private PlayerDash playerDash;
+    private MeleeAttack meleeAttack;
 
     private void Start()
     {
         playerHealth = FindObjectOfType<Health>();
         playerDash = FindObjectOfType<PlayerDash>();
+        meleeAttack = FindObjectOfType<MeleeAttack>();
     }
 
     public void AddItem(IInventoryItem newItem)
@@ -29,6 +31,10 @@ public class Inventory : MonoBehaviour
         {
             extraDashItem.Use(playerDash);
         }
+        else if (newItem is DamageBoostItem damageBoostItem)
+        {
+            damageBoostItem.Use(meleeAttack);
+        }
     }
 
     private void ApplyItemEffect(MaxHealthItem item)
@@ -39,3 +45,4 @@ public class Inventory : MonoBehaviour
         }
     }
 }
+
