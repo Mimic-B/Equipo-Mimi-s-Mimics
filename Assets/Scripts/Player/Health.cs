@@ -27,26 +27,26 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
-        // Reducir la vida del jugador
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, maxHealth); // Asegura que la vida no sea menor que 0 ni mayor que maxHealth
+        
+        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, maxHealth); 
 
-        // Verificar si el jugador está muerto o herido
+       
         if (currentHealth > 0)
         {
-            // El jugador solo está herido
-            anim.SetTrigger("Hurt"); // Animación de daño
-            StartCoroutine(Invulnerability()); // Mostrar los iFrames (el jugador parpadea en rojo)
+            
+            anim.SetTrigger("Hurt"); 
+            StartCoroutine(Invulnerability()); 
         }
         else
         {
-            // El jugador murió debido al daño
+            
             if (!dead)
             {
-                // Este if statement asegura que la animación de muerte solo se ejecute una vez
-                anim.SetTrigger("die"); // Animación de muerte
-                GetComponent<PlayerMovement>().enabled = false; // Deshabilitar el movimiento del jugador, no puede moverse cuando está muerto
+                
+                anim.SetTrigger("die"); 
+                GetComponent<PlayerMovement>().enabled = false; 
                 dead = true;
-                onPlayerDeath?.Invoke(); // Invoca eventos adicionales en la muerte del jugador
+                onPlayerDeath.Invoke(); 
             }
         }
     }
@@ -55,6 +55,14 @@ public class Health : MonoBehaviour
     public void AddHealth(float _value)
     {
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, maxHealth); // Asegura que la vida no sea menor que 0 ni mayor que maxHealth
+    }
+
+    // Método para aumentar la vida máxima del jugador
+    public void IncreaseMaxHealth(float amount)
+    {
+        maxHealth += amount;
+        currentHealth = maxHealth; // Opcional: ajustar la vida actual para que sea igual a la nueva vida máxima
+        Debug.Log("Vida máxima del jugador aumentada: " + maxHealth);
     }
 
     // Método para iFrames - el jugador parpadea en rojo cuando es golpeado y tiene un breve período de invulnerabilidad
@@ -70,15 +78,8 @@ public class Health : MonoBehaviour
         }
         Physics2D.IgnoreLayerCollision(8, 9, false); // Reactivar colisiones, terminando la invulnerabilidad del jugador
     }
-
-    public void IncreaseHP (float amount)
-    {
-        maxHealth += amount;
-    }
-
-
-
 }
+
 
 
 // test to see if TakeDamage works, press E to take damage

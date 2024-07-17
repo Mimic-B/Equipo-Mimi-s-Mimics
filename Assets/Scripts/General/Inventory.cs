@@ -4,29 +4,38 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Item> items = new List<Item>(); // Lista de ítems en el inventario
+    public List<IInventoryItem> items = new List<IInventoryItem>(); // Lista de ítems en el inventario
     public int coins; // Monedas del jugador
 
-    private Health health;
+    private Health playerHealth;
+    private PlayerDash playerDash;
 
     private void Start()
     {
-        health = GetComponent<Health>();
+        playerHealth = FindObjectOfType<Health>();
+        playerDash = FindObjectOfType<PlayerDash>();
     }
-    public void AddItem(Item newItem)
+
+    public void AddItem(IInventoryItem newItem)
     {
         items.Add(newItem);
         Debug.Log("Item agregado al inventario: " + newItem.itemName);
 
-        ApplyItemEffect(newItem);
+        if (newItem is MaxHealthItem maxHealthItem)
+        {
+            ApplyItemEffect(maxHealthItem);
+        }
+        else if (newItem is ExtraDashItem extraDashItem)
+        {
+            extraDashItem.Use(playerDash);
+        }
     }
 
-    private void ApplyItemEffect(ItemaumentoHP itemaumentoHP)
+    private void ApplyItemEffect(MaxHealthItem item)
     {
-        if (itemaumentoHP.maxhpincrease > 0)
+        if (item.maxHealthIncrease > 0)
         {
-            Health.IncreaseHP(itemaumentoHP.maxhpincrease);
+            playerHealth.IncreaseMaxHealth(item.maxHealthIncrease);
         }
     }
 }
-

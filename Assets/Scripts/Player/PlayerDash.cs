@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
-    public float dashSpeed = 15f; 
+    public float dashSpeed = 15f;
     public float dashDuration = 0.2f;
     public float doubleTapTime = 0.3f;
     public float dashCooldown = 1.3f; // Tiempo de cooldown entre dashes
     public Color dashColor = Color.red;
+    public int baseDashCount = 1; // Número base de dashes disponibles
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -20,12 +21,14 @@ public class PlayerDash : MonoBehaviour
     private string lastButton = "";
     private bool isInvulnerable = false;
     private float lastDashTime;
+    private int remainingDashes;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+        remainingDashes = baseDashCount;
     }
 
     void Update()
@@ -43,7 +46,7 @@ public class PlayerDash : MonoBehaviour
 
     void HandleDashInput()
     {
-        if (Time.time - lastDashTime < dashCooldown) return;
+        if (remainingDashes <= 0) return;
 
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -64,16 +67,17 @@ public class PlayerDash : MonoBehaviour
             lastButton = "Horizontal";
             lastTapTime = Time.time;
         }
-
-       
     }
 
     void StartDash()
     {
+        if (Time.time - lastDashTime < dashCooldown || remainingDashes <= 0) return;
+
         isDashing = true;
         isInvulnerable = true;
         dashTimeLeft = dashDuration;
-        lastDashTime = Time.time; // Registrar el tiempo en que se inició el dash
+        lastDashTime = Time.time;
+        remainingDashes--;
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * dashSpeed;
         spriteRenderer.color = dashColor;
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Obstacles"), true);
@@ -102,5 +106,10 @@ public class PlayerDash : MonoBehaviour
     public bool IsDashing()
     {
         return isDashing;
+    }
+
+    public void IncreaseDashes(int amount)
+    {
+        remainingDashes += amount;
     }
 }

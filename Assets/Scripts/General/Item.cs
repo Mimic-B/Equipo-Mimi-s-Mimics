@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class Item : ScriptableObject
+public class Item : ScriptableObject, IInventoryItem
 {
-    public string itemName; // Nombre del ítem
-    public Sprite icon; // Icono del ítem
-    public int value; // Valor del ítem (por ejemplo, cantidad de salud que restaura)
+    [SerializeField] private string _itemName;
+    public Sprite itemIcon;
+    public string itemName => _itemName;
+    
+    public void Use()
+    {
+        // Implementar el comportamiento del ítem aquí
+        Debug.Log("Usando item: " + itemName);
+    }
 }
 

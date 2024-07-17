@@ -8,15 +8,14 @@ public class Shop : MonoBehaviour
     public Inventory playerInventory; // Referencia al inventario del jugador
     public GameObject shopUI; // UI de la tienda
     public Button[] itemButtons; // Botones para los ítems de la tienda
-    public Item[] itemsForSale; // Ítems que se pueden comprar en la tienda
+    public IInventoryItem[] itemsForSale; // Ítems que se pueden comprar en la tienda
     public int[] itemPrices; // Precios de los ítems
 
     private void Start()
     {
-        // Inicializar los botones de los ítems
         for (int i = 0; i < itemButtons.Length; i++)
         {
-            int index = i; // Necesario para capturar la variable en el lambda
+            int index = i;
             itemButtons[i].onClick.AddListener(() => BuyItem(index));
         }
     }
@@ -39,7 +38,7 @@ public class Shop : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            shopUI.SetActive(true); // Mostrar UI de la tienda
+            shopUI.SetActive(true);
         }
     }
 
@@ -47,9 +46,8 @@ public class Shop : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            shopUI.SetActive(false); // Ocultar UI de la tienda
+            shopUI.SetActive(false);
         }
     }
 }
-
 
