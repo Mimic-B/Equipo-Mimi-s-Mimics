@@ -8,13 +8,13 @@ public class Inventory : MonoBehaviour
     public int coins; // Monedas del jugador
 
     private Health playerHealth;
-    private PlayerDash playerDash;
+   
     private MeleeAttack meleeAttack;
 
     private void Start()
     {
         playerHealth = FindObjectOfType<Health>();
-        playerDash = FindObjectOfType<PlayerDash>();
+        
         meleeAttack = FindObjectOfType<MeleeAttack>();
     }
 
@@ -26,10 +26,6 @@ public class Inventory : MonoBehaviour
         if (newItem is MaxHealthItem maxHealthItem)
         {
             ApplyItemEffect(maxHealthItem);
-        }
-        else if (newItem is ExtraDashItem extraDashItem)
-        {
-            extraDashItem.Use(playerDash);
         }
         else if (newItem is DamageBoostItem damageBoostItem)
         {

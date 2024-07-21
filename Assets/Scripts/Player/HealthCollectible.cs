@@ -7,10 +7,10 @@ public class HealthCollectible : MonoBehaviour
     [SerializeField] private float healthValue; // how much health will the heart actually restore
 
 
-    private void CollisionEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // check if the player has collided with the heart
-        if (collision.tag == "Player")
+        if (collision.transform.CompareTag("Player"))
         {
             collision.GetComponent<Health>().AddHealth(healthValue); // increase player health by healthValue, using AddHealth method from Health.cs
             gameObject.SetActive(false); // disable the heart after collision, so can only be used once

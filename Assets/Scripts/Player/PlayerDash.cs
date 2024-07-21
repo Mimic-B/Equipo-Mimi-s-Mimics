@@ -9,7 +9,7 @@ public class PlayerDash : MonoBehaviour
     public float doubleTapTime = 0.3f;
     public float dashCooldown = 1.3f; // Tiempo de cooldown entre dashes
     public Color dashColor = Color.red;
-    public int baseDashCount = 1; // Número base de dashes disponibles
+    
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -21,14 +21,14 @@ public class PlayerDash : MonoBehaviour
     private string lastButton = "";
     private bool isInvulnerable = false;
     private float lastDashTime;
-    private int remainingDashes;
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-        remainingDashes = baseDashCount;
+        
     }
 
     void Update()
@@ -46,7 +46,6 @@ public class PlayerDash : MonoBehaviour
 
     void HandleDashInput()
     {
-        if (remainingDashes <= 0) return;
 
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -71,13 +70,13 @@ public class PlayerDash : MonoBehaviour
 
     void StartDash()
     {
-        if (Time.time - lastDashTime < dashCooldown || remainingDashes <= 0) return;
+        if (Time.time - lastDashTime < dashCooldown) return;
 
         isDashing = true;
         isInvulnerable = true;
         dashTimeLeft = dashDuration;
         lastDashTime = Time.time;
-        remainingDashes--;
+        
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * dashSpeed;
         spriteRenderer.color = dashColor;
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Obstacles"), true);
@@ -95,6 +94,7 @@ public class PlayerDash : MonoBehaviour
             isInvulnerable = false;
             spriteRenderer.color = originalColor;
             Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Obstacles"), false);
+            
         }
     }
 
@@ -108,8 +108,4 @@ public class PlayerDash : MonoBehaviour
         return isDashing;
     }
 
-    public void IncreaseDashes(int amount)
-    {
-        remainingDashes += amount;
-    }
 }
