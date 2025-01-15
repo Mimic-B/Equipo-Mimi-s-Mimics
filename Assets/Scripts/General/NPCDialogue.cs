@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class NPCDialogue : MonoBehaviour
 {
     public string[] dialogues; // Array de diálogos
-    private int currentDialogueIndex = 0;
+    public int currentDialogueIndex = 0;
     private bool isPlayerNearby = false;
     private bool isDialogueActive = false;
 

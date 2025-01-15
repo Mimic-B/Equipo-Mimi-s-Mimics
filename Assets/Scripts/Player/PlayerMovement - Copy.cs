@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     public bool isGrounded = false;
     private int jumpsLeft;
+    private float coyoteTime = 0.3f; // Duración del coyote time
+    private float coyoteTimeCounter;
 
     public bool isAttacking = false;
     
@@ -43,7 +45,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isGrounded)
         {
+            coyoteTimeCounter = coyoteTime;
             jumpsLeft = extraJumps;
+        }else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
 
@@ -54,10 +60,14 @@ public class PlayerMovement : MonoBehaviour
            
                 Jump();
 
+        }else if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
+        {
+            Jump();
         }
 
-        
-        
+
+
+
     }
 
     void FixedUpdate()
@@ -93,16 +103,17 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         jumpsLeft--;
+        coyoteTimeCounter = 0f;
 
         float moveInput = 0;
         // Si quieres que el jugador pueda cambiar la dirección del salto, puedes agregar esto:
         if (moveInput != 0)
          {
-            
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
          }
         animator.SetTrigger("Jump");
         animator.SetBool("HitGround", false);
+
     }
 
     
